@@ -7,24 +7,24 @@ cli to create Stencil components in your current working directory.
 install globally
 
 ```bash
-npm install -g st-cc
+npm install -g @lu-development/st-gen
 ```
 
 and run
 
 ```bash
-st-cc
+st-gen
 ```
 
 or use npx
 
 ```bash
-npx st-cc
+npx st-gen
 ```
 ## You can also provide component name e.g. 
 
 ```bash
-st-cc my-app
+st-gen my-app
 ```
 
 ## If you're using Stencil 0.7.18 or earlier

@@ -1,6 +1,6 @@
 {
-  "name": "st-cc",
-  "version": "0.7.0",
+  "name": "@lu-development/st-gen",
+  "version": "0.7.1",
   "description": "Stencil create component cli",
   "preferGlobal": true,
   "files": [
@@ -78,10 +78,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/jagreehal/st-cc.git"
+    "url": "https://github.com/jereckley/st-cc.git"
   },
   "bugs": {
-    "url": "https://github.com/jagreehal/st-cc/issues"
+    "url": "https://github.com/jereckley/st-cc/issues"
   },
-  "homepage": "https://github.com/jagreehal/st-cc#readme"
+  "homepage": "https://github.com/jereckley/st-cc#readme"
 }
