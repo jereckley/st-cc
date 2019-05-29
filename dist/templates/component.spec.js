@@ -15,6 +15,7 @@ describe('When building content for component', () => {
     it('Can build content for component with css', () => __awaiter(this, void 0, void 0, function* () {
         const result = component_1.createComponentContent({
             componentName: 'my-app',
+            componentGeneralName: 'app',
             styleExtension: 'css'
         });
         const expectedOutputPath = path.join(__dirname, 'tests/expected/component-with-css.tsx');
@@ -24,6 +25,7 @@ describe('When building content for component', () => {
     it('Can build content for component with scss', () => __awaiter(this, void 0, void 0, function* () {
         const result = component_1.createComponentContent({
             componentName: 'my-app',
+            componentGeneralName: 'app',
             styleExtension: 'scss'
         });
         const expectedOutputPath = path.join(__dirname, 'tests/expected/component-with-scss.tsx');
@@ -33,6 +35,7 @@ describe('When building content for component', () => {
     it('Can build content for component without style', () => __awaiter(this, void 0, void 0, function* () {
         const result = component_1.createComponentContent({
             componentName: 'my-app',
+            componentGeneralName: 'app',
             styleExtension: 'none'
         });
         const expectedOutputPath = path.join(__dirname, 'tests/expected/component-without-style.tsx');
@@ -42,6 +45,7 @@ describe('When building content for component', () => {
     it('Can build content for shadow component', () => __awaiter(this, void 0, void 0, function* () {
         const result = component_1.createComponentContent({
             componentName: 'my-app',
+            componentGeneralName: 'app',
             isShadow: true
         });
         const expectedOutputPath = path.join(__dirname, 'tests/expected/component-shadow.tsx');

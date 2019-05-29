@@ -5,7 +5,8 @@ import { createStyleContent } from './style';
 describe('When building content for style', () => {
   it('Can build content for component style file', async () => {
     const result = createStyleContent({
-      componentName: 'my-app'
+      componentName: 'my-app',
+      componentGeneralName: 'app'
     });
 
     const expectedOutputPath = path.join(
@@ -20,6 +21,7 @@ describe('When building content for style', () => {
   it('Can build content for shadow component style file', async () => {
     const result = createStyleContent({
       componentName: 'my-app',
+      componentGeneralName: 'app',
       isShadow: true
     });
 

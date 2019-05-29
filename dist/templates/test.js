@@ -3,35 +3,41 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const utils_1 = require("../utils");
 function createComponentTestContent({ componentName }) {
     const componentClassName = utils_1.convertComponentNameToComponentClassName(componentName);
-    return `import { TestWindow } from '@stencil/core/testing';
-import { ${componentClassName} } from './${componentName}';
+    const componentGeneralName = utils_1.convertComponentNameToComponentGeneralName(componentName);
+    return `import { ${componentClassName} } from '../${componentGeneralName}';
 
 describe('${componentName}', () => {
-  it('should build', () => {
-    expect(new ${componentClassName}()).toBeTruthy();
+  
+    let element: ${componentClassName}
+
+    beforeEach(() => {
+      element =  new ${componentClassName}()
+    });
+
+    it('should build', () => {
+    expect(element.toBeTruthy()
   });
+})
+`;
+}
+exports.createComponentTestContent = createComponentTestContent;
+function createComponentTestE2EContent({ componentName }) {
+    const componentClassName = utils_1.convertComponentNameToComponentClassName(componentName);
+    const componentGeneralName = utils_1.convertComponentNameToComponentGeneralName(componentName);
+    return `import { newE2EPage } from '@stencil/core/dist/testing';
+import { ${componentClassName} } from '../${componentGeneralName}';
 
-  describe('rendering', () => {
-    let element;
-    let window;
+describe('${componentName}', () => {
 
-    beforeEach(async () => {
-      window = new TestWindow();
-      element = await window.load({
-        components: [${componentClassName}],
-        html: '<${componentName}></${componentName}>'
-      });
-    });
+  it('renders', async () => {
+    const page = await newE2EPage();
 
-    it('should work with both the first and the last name', async () => {
-      element.first = 'Peter';
-      element.last = 'Parker';
-      await window.flush();
-      expect(element.textContent).toEqual('Hello, my name is Peter Parker');
-    });
+    await page.setContent('<${componentName}></${componentName}>');
+    const element = await page.find('${componentName}');
+    expect(element).toHaveClass('hydrated');
   });
 });
 `;
 }
-exports.createComponentTestContent = createComponentTestContent;
+exports.createComponentTestE2EContent = createComponentTestE2EContent;
 //# sourceMappingURL=test.js.map

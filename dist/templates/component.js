@@ -1,28 +1,29 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const utils_1 = require("../utils");
-function createComponentContent({ componentName, styleExtension = 'none', isShadow = false }) {
+function createComponentContent({ componentName, componentGeneralName, styleExtension = 'none', isShadow = false }) {
     const componentTags = [`tag: '${componentName}'`];
     if (styleExtension !== 'none') {
-        componentTags.push(`styleUrl: '${componentName}.${styleExtension}'`);
+        componentTags.push(`styleUrl: '${componentGeneralName}.${styleExtension}'`);
     }
     if (isShadow) {
         componentTags.push(`shadow: true`);
     }
-    return `import { Component, Prop } from '@stencil/core';
+    return `import { Component, Prop, Host, h } from '@stencil/core';
 
 @Component({
   ${componentTags.join(`,\n  `)}
 })
 export class ${utils_1.convertComponentNameToComponentClassName(componentName)} {
-  @Prop() first: string;
-  @Prop() last: string;
+  @Prop() data: string
 
   render() {
     return (
-      <div>
-        Hello, my name is {this.first} {this.last}
-      </div>
+      <Host>
+        <div class="${componentGeneralName}">
+          {this.data}
+        </div>
+      </Host>
     );
   }
 }

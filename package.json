@@ -13,7 +13,7 @@
   "scripts": {
     "prebuild": "rimraf dist",
     "build": "cross-env NODE_ENV=production tsc",
-    "dev": "npm run build && concurrently -k \"npm run watch\" \"npm run nodemon\"",
+    "dev": "npm run build && concurrently -k \"npm run tsc-watch\" \"npm run nodemon\"",
     "nodemon": "nodemon --inspect=0.0.0.0:9230  --watch dist --ignore **/*.spec.js dist/index.js",
     "test": "jest",
     "test-watch": "jest --watch",

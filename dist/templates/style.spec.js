@@ -14,7 +14,8 @@ const style_1 = require("./style");
 describe('When building content for style', () => {
     it('Can build content for component style file', () => __awaiter(this, void 0, void 0, function* () {
         const result = style_1.createStyleContent({
-            componentName: 'my-app'
+            componentName: 'my-app',
+            componentGeneralName: 'app'
         });
         const expectedOutputPath = path.join(__dirname, 'tests/expected/style.css');
         const expectedOutput = yield fse.readFile(expectedOutputPath);
@@ -23,6 +24,7 @@ describe('When building content for style', () => {
     it('Can build content for shadow component style file', () => __awaiter(this, void 0, void 0, function* () {
         const result = style_1.createStyleContent({
             componentName: 'my-app',
+            componentGeneralName: 'app',
             isShadow: true
         });
         const expectedOutputPath = path.join(__dirname, 'tests/expected/style-shadow.css');

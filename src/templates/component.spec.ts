@@ -7,6 +7,7 @@ describe('When building content for component', () => {
   it('Can build content for component with css', async () => {
     const result = createComponentContent({
       componentName: 'my-app',
+      componentGeneralName: 'app',
       styleExtension: 'css'
     });
     const expectedOutputPath = path.join(
@@ -20,6 +21,7 @@ describe('When building content for component', () => {
   it('Can build content for component with scss', async () => {
     const result = createComponentContent({
       componentName: 'my-app',
+      componentGeneralName: 'app',
       styleExtension: 'scss'
     });
     const expectedOutputPath = path.join(
@@ -33,6 +35,7 @@ describe('When building content for component', () => {
   it('Can build content for component without style', async () => {
     const result = createComponentContent({
       componentName: 'my-app',
+      componentGeneralName: 'app',
       styleExtension: 'none'
     });
     const expectedOutputPath = path.join(
@@ -46,6 +49,7 @@ describe('When building content for component', () => {
   it('Can build content for shadow component', async () => {
     const result = createComponentContent({
       componentName: 'my-app',
+      componentGeneralName: 'app',
       isShadow: true
     });
     const expectedOutputPath = path.join(

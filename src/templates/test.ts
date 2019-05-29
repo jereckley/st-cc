@@ -1,43 +1,62 @@
-import { convertComponentNameToComponentClassName } from '../utils';
+import {convertComponentNameToComponentClassName, convertComponentNameToComponentGeneralName} from '../utils'
 
 type CreateComponentArgs = {
-  componentName: string;
+    componentName: string;
 };
 
-export function createComponentTestContent({
-  componentName
-}: CreateComponentArgs) {
-  const componentClassName = convertComponentNameToComponentClassName(
-    componentName
-  );
+export function createComponentTestContent(
+    {
+        componentName
+    }: CreateComponentArgs) {
+    const componentClassName = convertComponentNameToComponentClassName(
+        componentName
+    )
 
-  return `import { TestWindow } from '@stencil/core/testing';
-import { ${componentClassName} } from './${componentName}';
+    const componentGeneralName = convertComponentNameToComponentGeneralName(
+        componentName
+    )
+
+    return `import { ${componentClassName} } from '../${componentGeneralName}';
 
 describe('${componentName}', () => {
-  it('should build', () => {
-    expect(new ${componentClassName}()).toBeTruthy();
-  });
-
-  describe('rendering', () => {
-    let element;
-    let window;
-
-    beforeEach(async () => {
-      window = new TestWindow();
-      element = await window.load({
-        components: [${componentClassName}],
-        html: '<${componentName}></${componentName}>'
-      });
+  
+    let element: ${componentClassName}
+    
+    beforeEach(() => {
+      element =  new ${componentClassName}()
     });
-
-    it('should work with both the first and the last name', async () => {
-      element.first = 'Peter';
-      element.last = 'Parker';
-      await window.flush();
-      expect(element.textContent).toEqual('Hello, my name is Peter Parker');
+    
+    it('should build', () => {
+        expect(element).toBeTruthy()
     });
+})
+`
+}
+
+export function createComponentTestE2EContent(
+    {
+        componentName
+    }: CreateComponentArgs) {
+    const componentClassName = convertComponentNameToComponentClassName(
+        componentName
+    )
+
+    const componentGeneralName = convertComponentNameToComponentGeneralName(
+        componentName
+    )
+
+    return `import { newE2EPage } from '@stencil/core/dist/testing';
+import { ${componentClassName} } from '../${componentGeneralName}';
+
+describe('${componentName}', () => {
+
+  it('renders', async () => {
+    const page = await newE2EPage();
+
+    await page.setContent('<${componentName}></${componentName}>');
+    const element = await page.find('${componentName}');
+    expect(element).toHaveClass('hydrated');
   });
 });
-`;
+`
 }

@@ -5,10 +5,21 @@ export function convertComponentNameToComponentClassName(
 ) {
   return componentName
     .split('-')
-    .map(w => {
-      return w.charAt(0).toUpperCase() + w.slice(1);
+    .map((w, index) => {
+      return index === 0 ? '' :w.charAt(0).toUpperCase() + w.slice(1);
     })
     .join('');
+}
+
+export function convertComponentNameToComponentGeneralName(
+    componentName: string = ''
+) {
+  return componentName
+      .split('-')
+      .map((w,index) => {
+        return index === 0 ? '' : index === 1 ? w : "-" + w
+      })
+      .join('');
 }
 
 export function validateComponentName(name: string) {
