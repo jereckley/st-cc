@@ -9,14 +9,14 @@ function createComponentTestContent({ componentName }) {
 describe('${componentName}', () => {
   
     let element: ${componentClassName}
-
+    
     beforeEach(() => {
       element =  new ${componentClassName}()
     });
-
+    
     it('should build', () => {
-    expect(element.toBeTruthy()
-  });
+        expect(element).toBeTruthy()
+    });
 })
 `;
 }

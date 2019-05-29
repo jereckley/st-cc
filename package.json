@@ -1,13 +1,13 @@
 {
   "name": "@lu-development/st-gen",
-  "version": "0.7.1",
+  "version": "0.7.2",
   "description": "Stencil create component cli",
   "preferGlobal": true,
   "files": [
     "/dist"
   ],
   "bin": {
-    "st-cc": "./dist/index.js"
+    "st-gen": "./dist/index.js"
   },
   "main": "./dist/index.js",
   "scripts": {
