@@ -25,7 +25,6 @@ function createComponentTestE2EContent({ componentName }) {
     const componentClassName = utils_1.convertComponentNameToComponentClassName(componentName);
     const componentGeneralName = utils_1.convertComponentNameToComponentGeneralName(componentName);
     return `import { newE2EPage } from '@stencil/core/dist/testing';
-import { ${componentClassName} } from '../${componentGeneralName}';
 
 describe('${componentName}', () => {
 

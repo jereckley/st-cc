@@ -46,7 +46,6 @@ export function createComponentTestE2EContent(
     )
 
     return `import { newE2EPage } from '@stencil/core/dist/testing';
-import { ${componentClassName} } from '../${componentGeneralName}';
 
 describe('${componentName}', () => {
 
